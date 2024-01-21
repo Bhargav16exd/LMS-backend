@@ -11,6 +11,7 @@ app.use(cors({
     origin:process.env.ORIGIN,
     credentials:true,
 }))
+
 app.use(express.static("public"))
 app.use(express.json({
     limit:"50mb"
