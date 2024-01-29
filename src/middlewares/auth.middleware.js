@@ -7,9 +7,8 @@ const authMiddleware = asyncHandler(async(req,res,next)=>{
 
     try {
         
-        const token = req.cookies?.accessToken || req.Header("Authorization")?.replace("Bearer","")
+        const token = req.cookies?.accessToken || req.headers['authorization']?.replace("Bearer", "");
 
-        console.log(token)
     
         if(!token){
             throw new ApiError(400,"You are not authorized")
@@ -28,7 +27,7 @@ const authMiddleware = asyncHandler(async(req,res,next)=>{
         next();
 
     } catch (error) {
-        throw new ApiError(500,"Internal Server Error",error)
+        throw new ApiError(500,error.message)
     }
 
 })
