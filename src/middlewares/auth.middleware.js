@@ -7,7 +7,7 @@ const authMiddleware = asyncHandler(async(req,res,next)=>{
 
     try {
         
-        const token = req.signedCookies?.accessToken || req.headers['authorization']?.replace("Bearer", "");
+        const token = req.cookies?.accessToken || req.headers['authorization']?.replace("Bearer", "");
 
     
         if(!token){
